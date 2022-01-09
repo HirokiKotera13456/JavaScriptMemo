@@ -38,3 +38,37 @@ const newNumArr = numArr.filter((num) => {
 console.log(newNumArr)
 /// 2,4
  ```
+ 
+ # React復習
+ 
+ # inputタグをuseStateを用いて状態管理する方法
+ 
+ input1タグには valueをつけることに注意 また、状態を変更する際にはonChange関数を用いる。onChangeがないとinput欄に何も打ち込めない。
+ ```
+   const onChangeTodoText = (e) => setTodoText(e.target.value) 
+   return(
+    <input  value={todoText} onChange = {onChangeTodoText} />
+   )
+ ```
+ 
+ # inputタグに入力したものをTODOリストに追加する方法
+ まず、buttonタグにonClick関数（クリックで何か起こす関数）を追加
+ ```
+    <button　onClick={onClickAdd}>追加</button>
+ ```
+ また、空文字はリストに登録されないように以下の設定をする。
+ ```
+ if (todoText === "") return;
+ ```
+ あとは、スプレッド構文を用いてtodoを追加し、set関数で値を更新する
+ ```
+  const onClickAdd = () => {
+    if (todoText === "") return;
+    const newTodos = [...incompleteTodos,todoText];
+    setIncompleteTodos(newTodos);
+    setTodoText("");
+  }
+ ```
+ 
+  
+ 
