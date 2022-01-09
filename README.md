@@ -54,7 +54,7 @@ console.log(newNumArr)
  # inputタグに入力したものをTODOリストに追加する方法
  まず、buttonタグにonClick関数（クリックで何か起こす関数）を追加
  ```
-    <button　onClick={onClickAdd}>追加</button>
+  <button　onClick={onClickAdd}>追加</button>
  ```
  また、空文字はリストに登録されないように以下の設定をする。
  ```
