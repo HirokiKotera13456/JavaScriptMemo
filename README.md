@@ -40,12 +40,17 @@ console.log(newNumArr)
  ```
  
 ## 分割代入
-
-const myprofile = { name: "山田" , age: 23 };
+```
+const myProfile = { name: "山田" , age: 23 };
 const message = 名前は{myProfile.name}です
+```
 これは冗長であるが、分割代入を利用することで
+```
+const myProfile = { name: "山田" , age: 23 };
 const {name, age} = myProfile
-const message = 名前は{name}ですとかくことができる
+const message = 名前は{name}です
+```
+と、変数が多くなるにつれて効率的にかける
 
 
  
