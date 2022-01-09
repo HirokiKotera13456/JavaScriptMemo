@@ -39,6 +39,16 @@ console.log(newNumArr)
 /// 2,4
  ```
  
+## 分割代入
+
+const myprofile = { name: "山田" , age: 23 };
+const message = 名前は{myProfile.name}です
+これは冗長であるが、分割代入を利用することで
+const {name, age} = myProfile
+const message = 名前は{name}ですとかくことができる
+
+
+ 
  # React復習
  
  ## inputタグをuseStateを用いて状態管理する方法
