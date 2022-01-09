@@ -1,6 +1,6 @@
-## javascript復習
+# javascript復習
 
-# map関数
+## map関数
 
 name は何の変数でも大丈夫
 ``` 
@@ -26,7 +26,7 @@ const nameArr = name.map((name,index)=> {
 ///2番目は吉田です 
   ```
   
-  # filter関数
+  ## filter関数
   numは何の変数でも大丈夫
  
  ```
@@ -41,7 +41,7 @@ console.log(newNumArr)
  
  # React復習
  
- # inputタグをuseStateを用いて状態管理する方法
+ ## inputタグをuseStateを用いて状態管理する方法
  
  input1タグには valueをつけることに注意 また、状態を変更する際にはonChange関数を用いる。onChangeがないとinput欄に何も打ち込めない。
  ```
@@ -51,7 +51,7 @@ console.log(newNumArr)
    )
  ```
  
- # inputタグに入力したものをTODOリストに追加する方法
+ ## inputタグに入力したものをTODOリストに追加する方法
  まず、buttonタグにonClick関数（クリックで何か起こす関数）を追加
  ```
   <button　onClick={onClickAdd}>追加</button>
@@ -70,7 +70,7 @@ console.log(newNumArr)
   }
  ```
  
- # todoリストからtodoを削除する方法
+ ## todoリストからtodoを削除する方法
  まず、buttonタグにonClick関数を用いる。そして、何番目のtodoを削除するか判断するためにindexの引数をわたす。
  そして、onClickDelete(index)のままだと、todoリストが追加された瞬間に全て削除されてしまうので、
  ()=> onClickDelete(index)のようにしてonClickDeleteをアロー関数内に入れる
@@ -86,7 +86,7 @@ console.log(newNumArr)
     setIncompleteTodos(newTodos)
   }
  ```
-# todoリストの完了リストから未完了リストへ移動させる方法
+## todoリストの完了リストから未完了リストへ移動させる方法
   
 基本的なやり方は削除機能と同じなので詳しいやり方は省く
 
@@ -108,4 +108,28 @@ incompleteTodos[index]など
 
 ````
 
- 
+## コンポーネント化
+ App.jsのreturn以下が冗長なので、コンポーネント分割する。
+ 例えば、inputをコンポーネント分割する場合は、
+ ```
+export const Input = (props) => {
+  const { todoText, onChange, onClick } = props;
+  return (
+    <div className="input-area">
+      <input placeholder="TODOを入力" value={todoText} onChange={onChange} />
+      <button onClick={onClick}>追加</button>
+    </div>
+  );
+};
+ ```
+ 上記を一つのファイルにまとめる。
+ そして、App.jsに以下を記述し、importする。
+ ```
+ <Input  todoText={todoText} onChange={onChangeTodoText} onClick = {onClickAdd} />
+ ```
+ また、変数はprops化して渡す。
+ その時に、分割代入を用いる。
+
+propsは
+コンポーネントファイルのonClickが実行→App.jsのonClickAddが実行
+という流れになる。
