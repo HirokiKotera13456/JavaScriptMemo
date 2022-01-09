@@ -70,5 +70,21 @@ console.log(newNumArr)
   }
  ```
  
+ # todoリストからtodoを削除する方法
+ まず、buttonタグにonClick関数を用いる。そして、何番目のtodoを削除するか判断するためにindexの引数をわたす。
+ そして、onClickDelete(index)のままだと、todoリストが追加された瞬間に全て削除されてしまうので、
+ ()=> onClickDelete(index)のようにしてonClickDeleteをアロー関数内に入れる
+ ```
+  <button onClick={() => onClickDelete(index)}>削除</button>
+ ```
+ あとは、onClickDelete関数を定義するだけである。splice関数は第一引数に何番目の要素を消すか、第二引数に消す要素の数を指定する.
+ 
+ ```
+   const onClickDelete = (index) => {
+    const newTodos = [...incompleteTodos];
+    newTodos.splice(index,1);
+    setIncompleteTodos(newTodos)
+  }
+ ```
   
  
