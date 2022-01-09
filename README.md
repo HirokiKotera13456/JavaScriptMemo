@@ -86,5 +86,26 @@ console.log(newNumArr)
     setIncompleteTodos(newTodos)
   }
  ```
+# todoリストの完了リストから未完了リストへ移動させる方法
   
+基本的なやり方は削除機能と同じなので詳しいやり方は省く
+
+完了リストから削除
+↓
+未完了リストに削除した完了リストを移動させる
+
+というやり方である。
+onClick関数の定義は以下のようになるが、どの項目を消したかを明らかにするために、indexの引数は忘れないようにしよう。
+incompleteTodos[index]など
+```
+  const onClickComplete = (index) => {
+    const newTodos = [...incompleteTodos];
+    newTodos.splice(index,1);
+    setIncompleteTodos(newTodos)
+    const newCompleteTodos = [...completeTodos,incompleteTodos[index]];
+    setCompleteTodos(newCompleteTodos);
+  }
+
+````
+
  
